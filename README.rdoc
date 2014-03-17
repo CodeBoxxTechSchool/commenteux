@@ -20,12 +20,6 @@ Add the following line to your Gemfile
 
 == Usage
 
-Make your ActiveRecord model act as commentable:
-
-  class Post < ActiveRecord::Base
-    acts_as_commentable
-  end
-
 Mount the commenteux gem in your routes:
 
   mount Commenteux::Engine => "/"
