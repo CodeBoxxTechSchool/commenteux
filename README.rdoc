@@ -32,7 +32,9 @@ Mount the commenteux gem in your routes:
 
 Call url of commenteux screens, for exemple, like that:
 
-  <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe, "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target", :id => "notes_tab", :data => {:remote => true} %>
+  <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe,
+                "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target",
+                :id => "notes_tab", :data => {:remote => true} %>
 
 == Credits
 
