@@ -8,7 +8,7 @@ div where you want the response to ben inserted.
 
 Note that the presentation layer is based on bootstrap.
 
-Note that you must have act_as_commentable installed and ready in your desired resource.
+Also note that you must have act_as_commentable installed and declared in your desired resources.
 
 == Installation :
 
@@ -30,7 +30,7 @@ The routes that will be available are :
        GET  /commenteux/:resource/:resource_id/new(.:format) commenteux/notes#new
        POST /commenteux/:resource/:resource_id(.:format)     commenteux/notes#create
 
-where :resource is the name of your model (you can une namespace)
+where :resource is the name of your model (you can use namespace)
 
 Call url of commenteux screens, for exemple, like that:
 
