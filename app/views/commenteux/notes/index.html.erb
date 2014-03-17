@@ -1,0 +1,31 @@
+<%= javascript_include_tag 'commenteux/application' %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Commentaire</th>
+    <th>Fait par</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+
+  <% @comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.comment %>
+        </td>
+        <td>
+          <%= user_lookup(comment.user_id) %>
+        </td>
+        <td>
+          <%= comment.created_at %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to "Nouveau", "#", :id => "new_notes_link", :class => 'btn btn-primary',
+            :data => {:parent => @parent_div,
+                      :resource => @resource.downcase,
+                      :id => @resource_id } %>

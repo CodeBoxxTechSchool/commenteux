@@ -1,0 +1,49 @@
+= Commenteux
+
+This is a mountable gem that add a presentation layer to act_as_commentable.
+
+Mount this gem into your app to automatically have access to screens that list and create comments on any of your resources.
+Those screen will be inserted in your current app layout. You can call the routes of the gem with ajax passing a parent
+div where you want the response to ben inserted.
+
+Note that the presentation layer is based on bootstrap.
+
+Note that you must have act_as_commentable installed and ready in your desired resource.
+
+== Installation :
+
+Add the following line to your Gemfile
+
+=== Rails 4
+
+  gem 'commenteux'
+
+== Usage
+
+Make your ActiveRecord model act as commentable:
+
+  class Post < ActiveRecord::Base
+    acts_as_commentable
+  end
+
+Mount the commenteux gem in your routes:
+
+  mount Commenteux::Engine => "/"
+
+Call url of commenteux screens, for exemple, like that:
+
+  <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe, "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target", :id => "notes_tab", :data => {:remote => true} %>
+
+== Credits
+
+jackdempsey - The creator of act_as_commentable.
+
+== Contributors
+
+seurdge, rgagnon
+
+== More
+
+http://www.groupefungo.ca
+
+
