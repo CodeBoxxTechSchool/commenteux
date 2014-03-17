@@ -30,6 +30,14 @@ Mount the commenteux gem in your routes:
 
   mount Commenteux::Engine => "/"
 
+The routes that will be available are :
+
+       GET  /commenteux/:resource/:resource_id(.:format)     commenteux/notes#index
+       GET  /commenteux/:resource/:resource_id/new(.:format) commenteux/notes#new
+       POST /commenteux/:resource/:resource_id(.:format)     commenteux/notes#create
+
+where :resource is the name of your model (you can une namespace)
+
 Call url of commenteux screens, for exemple, like that:
 
   <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe,
@@ -55,7 +63,6 @@ seurdge, rgagnon
 
 == More
 
-https://github.com/seurdge/commenteux
 http://www.groupefungo.ca
 
 
