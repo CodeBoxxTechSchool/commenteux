@@ -36,6 +36,15 @@ Call url of commenteux screens, for exemple, like that:
                 "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target",
                 :id => "notes_tab", :data => {:remote => true} %>
 
+With a binding like that in your application.js
+
+  $(document).delegate '#notes_tab', 'ajax:success', (e, data, status, xhr) ->
+    console.log(xhr.responseText)
+    $('.tab_header').removeClass('active')
+    $('#notes_tab_header').addClass('active')
+    $('#ajax_target').html(xhr.responseText)
+
+
 == Credits
 
 jackdempsey - The creator of act_as_commentable.
