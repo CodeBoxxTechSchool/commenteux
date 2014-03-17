@@ -46,6 +46,7 @@ seurdge, rgagnon
 
 == More
 
+https://github.com/seurdge/commenteux
 http://www.groupefungo.ca
 
 
