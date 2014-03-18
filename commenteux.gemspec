@@ -11,10 +11,10 @@ Gem::Specification.new do |s|
   s.authors     = ["Groupe Fungo inc."]
   s.email       = ["ssavoie@fungo.ca"]
   s.homepage    = "https://github.com/seurdge/commenteux"
-  s.summary     = "This is a mountable gem that add a presentation layer to act_as_commentable."
+  s.summary     = "This is a mountable gem that add a presentation layer to acts_as_commentable."
   s.description = "Mount this gem into your app to automatically have access to screens that list and create comments on any of your resources that use act_as_commentable.
 Those screen will be inserted in your current app layout. You can call the routes of the gem with ajax passing a parent
-div where you want the response to ben inserted."
+div where you want the response to be inserted."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]

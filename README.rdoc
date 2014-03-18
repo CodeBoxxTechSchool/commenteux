@@ -1,6 +1,6 @@
 = Commenteux
 
-This is a mountable gem that add a presentation layer to act_as_commentable.
+This is a mountable gem that add a presentation layer to acts_as_commentable.
 
 Mount this gem into your app to automatically have access to screens that list and create comments on any of your resources.
 Those screen will be inserted in your current app layout. You can call the routes of the gem with ajax passing a parent
@@ -8,7 +8,7 @@ div where you want the response to ben inserted.
 
 Note that the presentation layer is based on bootstrap.
 
-Also note that you must have act_as_commentable installed and declared in your desired resources.
+Also note that you must have acts_as_commentable installed and declared in your desired resources.
 
 == Installation :
 
@@ -49,7 +49,7 @@ With a binding like that in your application.js
 
 == Credits
 
-jackdempsey - The creator of act_as_commentable.
+jackdempsey - The creator of acts_as_commentable.
 
 == Contributors
 
