@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.version     = Commenteux::VERSION
   s.authors     = ["Groupe Fungo inc."]
   s.email       = ["ssavoie@fungo.ca"]
-  s.homepage    = "https://github.com/seurdge/commenteux"
+  s.homepage    = "https://github.com/groupefungo/commenteux"
   s.summary     = "This is a mountable gem that add a presentation layer to acts_as_commentable."
   s.description = "Mount this gem into your app to automatically have access to screens that list and create comments on any of your resources that use acts_as_commentable.
 Those screen will be inserted in your current app layout. You can call the routes of the gem with ajax passing a parent
