@@ -2,15 +2,15 @@
 $ () ->
 
   $(document).delegate '#new_notes_link', 'click', (e) ->
-    console.log('new_notes_link click')
+    #console.log('new_notes_link click')
     event.stopPropagation()
     event.preventDefault()
     parent= $(@).data('parent')
     resource =  $(@).data('resource')
     id = $(@).data('id')
-    console.log('parent_div = ' + parent)
-    console.log('resource = ' + resource)
-    console.log('resource_id = ' + id)
+    #console.log('parent_div = ' + parent)
+    #console.log('resource = ' + resource)
+    #console.log('resource_id = ' + id)
     $.ajax
       url: "/commenteux/" + resource + "/" + id + "/new"
       type: "get"
@@ -18,9 +18,9 @@ $ () ->
       data:
         "parent_div": parent
       success: (returnData) ->
-        console.log('success')
-        console.log("#" + parent)
-        console.log(returnData)
+        #console.log('success')
+        #console.log("#" + parent)
+        #console.log(returnData)
         if parent
           $("#" + parent ).html(returnData)
         else
@@ -33,23 +33,37 @@ $ () ->
     @
 
   $(document).delegate '#new_comments', 'ajax:success', (e, data, status, xhr) ->
-    console.log('new_comments ajax success')
+
+    event.stopPropagation()
+    event.preventDefault()
+    #console.log('new_comments ajax success')
+
+    #TODO SS
+    #alert(e);
     parent = $('#new_comments').attr('data-parent')
+    parent = data.substring(data.indexOf('data-parent') + 12, data.indexOf('data-resource'));
+    parent = parent.replace('"', '')
+    parent = parent.replace('"', '')
+    parent = parent.replace(' ', '')
+
+    #console.log('parent = ' + parent)
+    #console.log('data = ' + data)
+    #console.log('xhr.getresponseHeader = ' + xhr.responseXML)
     if parent
       $('#' + parent).html(xhr.responseText)
     else
       $('body').html(xhr.responseText)
 
   $(document).delegate '#new_notes_cancelled', 'click', (e) ->
-    console.log('new_notes_cancelled click')
+    #console.log('new_notes_cancelled click')
     event.stopPropagation()
     event.preventDefault()
     parent= $(@).data('parent')
     resource =  $(@).data('resource')
     id = $(@).data('id')
-    console.log('parent_div = ' + parent)
-    console.log('resource = ' + resource)
-    console.log('resource_id = ' + id)
+    #console.log('parent_div = ' + parent)
+    #console.log('resource = ' + resource)
+    #console.log('resource_id = ' + id)
     $.ajax
       url: "/commenteux/" + resource + "/" + id + "?parent_div=" + parent
       type: "get"
@@ -57,13 +71,13 @@ $ () ->
       data:
         "parent_div": parent
       success: (returnData) ->
-        console.log('success')
-        console.log("#" + parent)
-        console.log(returnData)
+        #console.log('success')
+        #console.log("#" + parent)
+        #console.log(returnData)
         if parent
           $("#" + parent ).html(returnData)
         else
-          console.log('no parent')
+          #console.log('no parent')
           $('body').html(returnData)
         @
       error: (e) ->
