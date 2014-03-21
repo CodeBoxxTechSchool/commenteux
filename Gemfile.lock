@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    commenteux (1.0.6)
+    commenteux (1.1.0)
       acts_as_commentable
       rails (~> 4.0.3)
       rspec-rails
