@@ -24,11 +24,11 @@ Mount the commenteux gem in your routes:
 
   mount Commenteux::Engine => "/"
 
-==Include the needed javascript file in your application.js or application.js.coffee
+====Include the needed javascript file in your application.js or application.js.coffee
 
-=== Javascript
+==== Javascript
     //= require commenteux/application
-=== CoffeeScript
+==== CoffeeScript
     #= require commenteux/application
 
 
