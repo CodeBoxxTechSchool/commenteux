@@ -33,22 +33,10 @@ $ () ->
     @
 
   $(document).delegate '#new_comments', 'ajax:success', (e, data, status, xhr) ->
-
     event.stopPropagation()
     event.preventDefault()
     #console.log('new_comments ajax success')
-
-    #TODO SS
-    #alert(e);
     parent = $('#new_comments').attr('data-parent')
-    parent = data.substring(data.indexOf('data-parent') + 12, data.indexOf('data-resource'));
-    parent = parent.replace('"', '')
-    parent = parent.replace('"', '')
-    parent = parent.replace(' ', '')
-
-    #console.log('parent = ' + parent)
-    #console.log('data = ' + data)
-    #console.log('xhr.getresponseHeader = ' + xhr.responseXML)
     if parent
       $('#' + parent).html(xhr.responseText)
     else
