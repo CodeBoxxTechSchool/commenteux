@@ -24,7 +24,7 @@ Mount the commenteux gem in your routes:
 
   mount Commenteux::Engine => "/"
 
-Include the needed javascript file in your application.js or application.js.coffee
+==Include the needed javascript file in your application.js or application.js.coffee
 
 === Javascript
     //= require commenteux/application
@@ -62,6 +62,7 @@ jackdempsey - The creator of acts_as_commentable.
 == Contributors
 
 {Serge Savoie}[http://github.com/seurdge]
+
 {Rémi Gagnon}[http://github.com/rgagnon]
 
 == More
