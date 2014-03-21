@@ -24,7 +24,7 @@ $ () ->
         if parent
           $("#" + parent ).html(returnData)
         else
-          console.log('no parent')
+          #console.log('no parent')
           $('body').html(returnData)
         @
       error: (e) ->
