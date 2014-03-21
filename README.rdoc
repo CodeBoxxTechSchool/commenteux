@@ -49,7 +49,6 @@ Call url of commenteux screens, for exemple, like that:
 With a binding like that in your application.js
 
   $(document).delegate '#notes_tab', 'ajax:success', (e, data, status, xhr) ->
-    console.log(xhr.responseText)
     $('.tab_header').removeClass('active')
     $('#notes_tab_header').addClass('active')
     $('#ajax_target').html(xhr.responseText)
@@ -57,7 +56,7 @@ With a binding like that in your application.js
 
 == Credits
 
-jackdempsey - The creator of acts_as_commentable.
+{Jack Dempsey}[http://github.com/jackdempsey] - The creator of acts_as_commentable.
 
 == Contributors
 
