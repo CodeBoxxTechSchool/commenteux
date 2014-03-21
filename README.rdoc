@@ -24,14 +24,6 @@ Mount the commenteux gem in your routes:
 
   mount Commenteux::Engine => "/"
 
-====Include the needed javascript file in your application.js or application.js.coffee
-
-==== Javascript
-    //= require commenteux/application
-==== CoffeeScript
-    #= require commenteux/application
-
-
 The routes that will be available are :
 
        GET  /commenteux/:resource/:resource_id(.:format)     commenteux/notes#index
@@ -39,6 +31,14 @@ The routes that will be available are :
        POST /commenteux/:resource/:resource_id(.:format)     commenteux/notes#create
 
 where :resource is the name of your model (you can use namespace)
+
+
+====Include the needed javascript file in your application.js or application.js.coffee
+
+==== Javascript
+    //= require commenteux/application
+==== CoffeeScript
+    #= require commenteux/application
 
 Call url of commenteux screens, for exemple, like that:
 
