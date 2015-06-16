@@ -9,7 +9,8 @@
 
 </script>
 
-<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}",
+<!-- &roles=#{@roles.blank? ? '' : @roles} -->
+<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}",
                     :remote => true, :data => {:parent => @parent_div}, wrapper: :bootstrap do |c| %>
 
     <div style="display:none">
