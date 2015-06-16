@@ -20,7 +20,6 @@ Fonctionnalité: En tant qu'utilisateur,
     Étant donné j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id 1
     Et J'accède la page 'new' du gem avec des rôles
     Quand je clique sur le lien "new_notes_cancelled"
-    Alors j'attend "3" secondes
     Et la page d'affichage de la liste des commentaires pour DummyModel est affichée
 
   Scénario: Saisi et sauvegarde d'un nouveau commentaire
