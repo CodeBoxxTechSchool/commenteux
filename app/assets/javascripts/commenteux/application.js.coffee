@@ -8,6 +8,7 @@ $ () ->
     parent= $(@).data('parent')
     resource =  $(@).data('resource')
     id = $(@).data('id')
+    roles = $(@).data('roles')
     #console.log('parent_div = ' + parent)
     #console.log('resource = ' + resource)
     #console.log('resource_id = ' + id)
@@ -17,6 +18,7 @@ $ () ->
       dataType: "html"
       data:
         "parent_div": parent
+        "roles": roles
       success: (returnData) ->
         #console.log('success')
         #console.log("#" + parent)
@@ -35,7 +37,7 @@ $ () ->
   $(document).delegate '#new_comments', 'ajax:success', (e, data, status, xhr) ->
     event.stopPropagation()
     event.preventDefault()
-    #console.log('new_comments ajax success')
+    console.log('new_comments ajax success')
     parent = $('#new_comments').attr('data-parent')
     if parent
       $('#' + parent).html(xhr.responseText)
@@ -49,6 +51,7 @@ $ () ->
     parent= $(@).data('parent')
     resource =  $(@).data('resource')
     id = $(@).data('id')
+    roles = $(@).data('roles')
     #console.log('parent_div = ' + parent)
     #console.log('resource = ' + resource)
     #console.log('resource_id = ' + id)
@@ -58,6 +61,7 @@ $ () ->
       dataType: "html"
       data:
         "parent_div": parent
+        "roles": roles
       success: (returnData) ->
         #console.log('success')
         #console.log("#" + parent)

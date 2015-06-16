@@ -16,6 +16,9 @@ group :development, :test do
   gem 'fabrication'
   gem 'mysql2'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
   gem 'cucumber-rails', :require => false
 end
 

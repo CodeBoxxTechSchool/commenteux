@@ -27,4 +27,5 @@
 <%= link_to "Nouveau", "#", :id => "new_notes_link", :class => 'btn btn-primary',
             :data => {:parent => @parent_div,
                       :resource => @resource.downcase,
-                      :id => @resource_id } %>
+                      :id => @resource_id,
+                      :roles => @roles} %>

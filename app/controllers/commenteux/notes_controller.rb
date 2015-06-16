@@ -3,21 +3,53 @@ require_dependency "commenteux/application_controller"
 module Commenteux
   class NotesController < ApplicationController
 
-    def comments_params
-      comments_permit_fields = [:title, :comment, :user_id]
-      params.require(:comments).permit(
-          comments_permit_fields)
-    end
-
     def index
       resource = fetch_resource
-      @comments = resource.comments.all
+      @roles = params[:roles]
+      list_roles = manage_roles_parameter(params[:roles])
+      @comments = get_comments(resource, list_roles)
       @parent_div = params[:parent_div]
 
       if request.xhr?
         render :layout => false
       end
 
+    end
+
+    def new
+      resource = fetch_resource
+      @roles = params[:roles]
+      @list_roles = manage_roles_parameter(params[:roles])
+      role = nil
+      if @list_roles and @list_roles.length > 0
+       role = @list_roles[0]
+      end
+      @comments = get_comment_model_method(resource, role).new
+      @parent_div = params[:parent_div]
+
+      if request.xhr?
+        render :layout => false
+      end
+
+    end
+
+    def create
+      resource = fetch_resource
+      comments_params
+      get_comment_model_method(resource, params[:comments][:role]).create(comments_params)
+      @parent_div = params[:parent_div]
+      roles = ''
+      if params[:roles]
+        roles = '&roles=' + params[:roles]
+      end
+      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles
+    end
+
+    protected
+    def comments_params
+      comments_permit_fields = [:title, :comment, :user_id, :role, :roles]
+      params.require(:comments).permit(
+          comments_permit_fields)
     end
 
     def fetch_resource
@@ -41,22 +73,36 @@ module Commenteux
       const
     end
 
-    def new
-      resource = fetch_resource
-      @comments = resource.comments.new
-      @parent_div = params[:parent_div]
-
-      if request.xhr?
-        render :layout => false
+    def get_comments(resource, roles)
+      comments = []
+      if roles and roles.length > 0
+        roles.each do |role|
+          comments += get_comment_model_method(resource, role).all
+        end
+      else
+        comments = get_comment_model_method(resource, nil).all
       end
-
+      comments
     end
 
-    def create
-      resource = fetch_resource
-      resource.comments.create(comments_params)
-      @parent_div = params[:parent_div]
-      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div
+    def get_comment_model_method(resource, role)
+      if role
+        role_comments = role + "_comments"
+      else
+        role_comments = "comments"
+      end
+      resource.send(role_comments)
+    end
+
+    def manage_roles_parameter(roles_parameter)
+      roles = []
+      if roles_parameter and roles_parameter.include?(',')
+        splitted = roles_parameter.split(',')
+        for str in splitted do
+          roles << str
+        end
+      end
+      roles
     end
 
   end
