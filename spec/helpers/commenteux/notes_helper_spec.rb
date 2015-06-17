@@ -2,12 +2,21 @@ require "spec_helper"
 
 module Commenteux
   describe NotesHelper do
-    describe "Comportement de la méthode user_lookup" do
-      it "doit charger le user en paramètre" do
 
-        user = mock_model(User, {:name => 'blah'})
-        expect(User).to receive(:find).with(1) {user}
-        user_lookup(1)
+    describe "display_role?" do
+      it "la variable rôles contient un type de rôle, alors elle est affichée" do
+        result = display_role?(["delivery_man"])
+        expect(result).to eq true
+      end
+
+      it "la variable rôles ne contient aucune type de rôle, alors elle n'est pas affichée, variable à nil" do
+        result = display_role?(nil)
+        expect(result).to eq false
+      end
+
+      it "la variable rôles ne contient aucune type de rôle, alors elle n'est pas affichée, variable à tableau vide" do
+        result = display_role?([])
+        expect(result).to eq false
       end
     end
   end

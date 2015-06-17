@@ -1,8 +1,8 @@
 $ () ->
   $(document).delegate '#new_notes_link', 'click', (e) ->
-    console.log('new_notes_link click')
-    event.stopPropagation()
-    event.preventDefault()
+    #console.log('new_notes_link click')
+    e.stopPropagation()
+    e.preventDefault()
     parent = $(@).data('parent')
     resource = $(@).data('resource')
     id = $(@).data('id')
@@ -21,7 +21,7 @@ $ () ->
         #console.log('success')
         #console.log("#" + parent)
         #console.log(returnData)
-        if !parent.blank? and !parent == 'null'
+        if parent and parent != 'null'
           $("#" + parent).html(returnData)
         else
           #console.log('no parent')
@@ -35,9 +35,9 @@ $ () ->
   $(document).delegate '#new_comments', 'ajax:success', (e, data, status, xhr) ->
     e.stopPropagation()
     e.preventDefault()
-    console.log('new_comments ajax success')
+    #console.log('new_comments ajax success')
     parent = $('#new_comments').attr('data-parent')
-    if !parent.blank? and !parent == 'null'
+    if parent and parent != 'null'
       $('#' + parent).html(xhr.responseText)
     else
       $('body').html(xhr.responseText)

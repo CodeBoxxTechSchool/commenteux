@@ -1,16 +1,4 @@
-<script>
-
-  $(".simple_form").submit(function (event) {
-    $("<input type='text' value='" + <%= @roles.blank? ? '' : @roles %> + "' />")
-            .attr("id", "roles")
-            .attr("name", "roles")
-            .appendTo(".simple_form");
-  });
-
-</script>
-
-<!-- &roles=#{@roles.blank? ? '' : @roles} -->
-<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}",
+<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}",
                     :remote => true, :data => {:parent => @parent_div}, wrapper: :bootstrap do |c| %>
 
     <div style="display:none">
@@ -25,7 +13,7 @@
 
     <% unless @list_roles.blank? %>
 
-      <%= c.input :role, collection: @list_roles, as: :radio_buttons,
+      <%= c.input :role, collection: @list_roles, as: :radio_buttons, :label_method => :last, :value_method => :first,
                   :input_html => {:data => {:required => true}}, label: 'Rôle',
                   :item_wrapper_class => 'inline' %>
 

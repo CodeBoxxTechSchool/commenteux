@@ -19,10 +19,10 @@ module Commenteux
 
         expect(DummyModel).to receive(:find).with('1') {@dummy_model}
 
-        expect(subject).to receive(:manage_roles_parameter).with('comment,delivery_man') {list_roles}
+        expect(subject).to receive(:manage_roles_parameter).with('comments,delivery_man') {list_roles}
         expect(subject).to receive(:get_comments).with(@dummy_model, list_roles) {[comment_comments, delivery_man_comments]}
 
-        get 'index', resource: 'dummy_model', resource_id: '1', roles: 'comment,delivery_man'
+        get 'index', resource: 'dummy_model', resource_id: '1', roles: 'comments,delivery_man'
 
         assert_template layout: 'application'
       end
@@ -146,13 +146,13 @@ module Commenteux
         comments1 = double("comments1")
         comments2 = double("comments2")
 
-        expect(@dummy_model).to receive(:send).with('comment_comments') {comments1}
+        expect(@dummy_model).to receive(:send).with('comments_comments') {comments1}
         expect(comments1).to receive(:all) {[comments1]}
 
         expect(@dummy_model).to receive(:send).with('delivery_man_comments') {comments2}
         expect(comments2).to receive(:all) {[comments2]}
 
-        comments = controller.send(:get_comments, @dummy_model, ['comment','delivery_man'])
+        comments = controller.send(:get_comments, @dummy_model, [['comments','Admin'],['delivery_man','Livreur']])
 
         expect(comments[0]).to eq comments1
         expect(comments[1]).to eq comments2
@@ -189,7 +189,7 @@ module Commenteux
      it "avec paramètres" do
        list_roles = controller.send(:manage_roles_parameter, 'comments,delivery_man')
 
-       expect(list_roles).to eq ['comments','delivery_man']
+       expect(list_roles).to eq [['comments','Administrateur'],['delivery_man','Livreur']]
       end
     end
 

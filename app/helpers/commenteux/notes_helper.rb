@@ -1,9 +1,11 @@
 module Commenteux
   module NotesHelper
 
-    def user_lookup(user_id)
-      if user_id
-        User.find(user_id).name
+    def display_role?(roles)
+      if roles and roles.length > 0
+        true
+      else
+        false
       end
     end
 

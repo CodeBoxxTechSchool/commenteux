@@ -1,9 +1,12 @@
 When(/^j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id (\d+)$/) do |arg1|
-  @dummy_model = Fabricate(:dummy_model, {:id => 1})
+  comment1 = Fabricate(:comment, {:comment => 'note 1 administrateur', :commentable_type => 'DummyModel', :role => 'comments'})
+  comment2 = Fabricate(:comment, {:comment => 'note 2 livreur', :commentable_type => 'DummyModel', :role => 'delivery_man'})
+  @dummy_model = Fabricate(:dummy_model, {:id => 1, comments_comments: [comment1], delivery_man_comments: [comment2]})
 end
 
 When(/^j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id (\d+)$/) do |arg1|
-  @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => 1})
+  comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyModel', :role => 'comments'})
+  @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => 1, comments: [comment]})
 end
 
 When(/^J'accède la page 'index' du gem avec des rôles$/) do
@@ -26,6 +29,18 @@ Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affi
   page.should have_content('Commentaire')
   page.should have_content('Fait par')
   page.should have_content('Date')
+  page.should have_content('Rôle')
+  page.should have_content('note 1 administrateur')
+  page.should have_content('note 2 livreur')
+  page.has_xpath?('//table')
+end
+
+Then(/^la page d'affichage de la liste des commentaires pour DummyNoRoleModel est affichée$/) do
+  page.should have_content('Commentaire')
+  page.should have_content('Fait par')
+  page.should have_content('Date')
+  page.should_not have_content('Rôle')
+  page.should have_content('note 3 administrateur')
   page.has_xpath?('//table')
 end
 
@@ -54,16 +69,16 @@ And(/^le nouveau commentaire saisi "(.*?)" s'y trouve$/) do |arg1|
   page.should have_content(arg1)
 end
 
-And(/^le nouveau commentaire est bien saisi dans le base de données$/) do
-  comment = Comment.find_by_commentable_id(1)
+And(/^le nouveau commentaire "(.*?)" est bien saisi dans le base de données$/) do |valeur_commentaire|
+  comment = Comment.find_by_comment(valeur_commentaire)
   comment.should_not be_nil
   comment.comment.should eq 'Ceci est un commentaire'
   comment.commentable_type.should eq 'DummyModel'
   comment.role.should eq 'delivery_man'
 end
 
-And(/^le nouveau commentaire sans rôle est bien saisi dans le base de données$/) do
-  comment = Comment.find_by_commentable_id(1)
+And(/^le nouveau commentaire sans rôle "(.*?)" est bien saisi dans le base de données$/) do |valeur_commentaire|
+  comment = Comment.find_by_comment(valeur_commentaire)
   comment.should_not be_nil
   comment.comment.should eq 'Ceci est un commentaire'
   comment.commentable_type.should eq 'DummyNoRoleModel'
@@ -80,4 +95,8 @@ end
 
 And(/^j'attend "(.*?)" secondes$/) do |arg1|
   sleep arg1.to_i
+end
+
+And(/^je vois le bouton radio "(.*?)" à l'écran$/) do |arg1|
+  page.should have_xpath("//label[contains(@class, 'radio') and contains(text(), '#{ arg1 }')]")
 end

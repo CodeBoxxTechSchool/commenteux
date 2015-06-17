@@ -25,9 +25,11 @@ Fonctionnalité: En tant qu'utilisateur,
   Scénario: Saisi et sauvegarde d'un nouveau commentaire
     Étant donné j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id 1
     Et J'accède la page 'new' du gem avec des rôles
+    Et je vois le bouton radio "Livreur" à l'écran
+    Et je vois le bouton radio "Administrateur" à l'écran
     Et je saisi le commentaire "Ceci est un commentaire"
     Et je saisi le champ radio "comments_role_delivery_man"
     Quand je sauvegarde
     Alors la page d'affichage de la liste des commentaires pour DummyModel est affichée
     Et le nouveau commentaire saisi "Ceci est un commentaire" s'y trouve
-    Et le nouveau commentaire est bien saisi dans le base de données
+    Et le nouveau commentaire "Ceci est un commentaire" est bien saisi dans le base de données

@@ -2,9 +2,12 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Commentaire</th>
-    <th>Fait par</th>
-    <th>Date</th>
+    <th class="col-md-6">Commentaire</th>
+    <th class="col-md-2">Fait par</th>
+    <th class="col-md-2">Date</th>
+    <% if display_role?(@roles) %>
+      <th class="col-md-2">Rôle</th>
+    <% end %>
   </tr>
   </thead>
 
@@ -19,6 +22,11 @@
         <td>
           <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M:%S") %>
         </td>
+        <% if display_role?(@roles) %>
+          <td>
+             <%= I18n.t(comment.role) %>
+          </td>
+        <% end %>
       </tr>
   <% end %>
 </table>

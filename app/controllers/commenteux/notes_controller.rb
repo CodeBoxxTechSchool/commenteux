@@ -2,6 +2,7 @@ require_dependency "commenteux/application_controller"
 
 module Commenteux
   class NotesController < ApplicationController
+    helper UsersHelper
 
     def index
       resource = fetch_resource
@@ -22,7 +23,7 @@ module Commenteux
       @list_roles = manage_roles_parameter(params[:roles])
       role = nil
       if @list_roles and @list_roles.length > 0
-       role = @list_roles[0]
+       role = @list_roles[0][0]
       end
       @comments = get_comment_model_method(resource, role).new
       @parent_div = params[:parent_div]
@@ -77,7 +78,7 @@ module Commenteux
       comments = []
       if roles and roles.length > 0
         roles.each do |role|
-          comments += get_comment_model_method(resource, role).all
+          comments += get_comment_model_method(resource, role[0]).all
         end
       else
         comments = get_comment_model_method(resource, nil).all
@@ -99,7 +100,8 @@ module Commenteux
       if roles_parameter and roles_parameter.include?(',')
         splitted = roles_parameter.split(',')
         for str in splitted do
-          roles << str
+          values = [str, I18n.t(str)]
+          roles << values
         end
       end
       roles

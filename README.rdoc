@@ -33,6 +33,13 @@ The routes that will be available are :
 where :resource is the name of your model (you can use namespace)
 
 
+==== Model
+Add acts_as_commentable in your model who will have comments
+
+    acts_as_commentable :private, :public
+
+:private, :public are a example if specific role needed.
+
 ====Include the needed javascript file in your application.js or application.js.coffee
 
 ==== Javascript
@@ -43,8 +50,10 @@ where :resource is the name of your model (you can use namespace)
 Call url of commenteux screens, for exemple, like that:
 
   <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe,
-                "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target",
+                "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target&roles=public,private",
                 :id => "notes_tab", :data => {:remote => true} %>
+
+where roles is obligated when specific roles are declared in the model.
 
 With a binding like that in your application.js
 
@@ -52,6 +61,13 @@ With a binding like that in your application.js
     $('.tab_header').removeClass('active')
     $('#notes_tab_header').addClass('active')
     $('#ajax_target').html(xhr.responseText)
+
+==== Rails Internationalization (en.yml)
+If specific roles of acts_as_commentable are declared in model, declare their labels under en: like that:
+
+  en:
+    public: "Administrator"
+    private: "Delivery man"
 
 
 == Credits
@@ -63,6 +79,8 @@ With a binding like that in your application.js
 {Serge Savoie}[http://github.com/seurdge]
 
 {Rémi Gagnon}[http://github.com/rgagnon]
+
+{Nicolas Demers}[http://github.com/nickdemers]
 
 == More
 

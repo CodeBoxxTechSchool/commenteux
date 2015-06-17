@@ -183,6 +183,3 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   simplecov
-
-BUNDLED WITH
-   1.10.3
