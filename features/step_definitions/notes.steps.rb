@@ -5,7 +5,7 @@ When(/^j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le 
 end
 
 When(/^j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id (\d+)$/) do |arg1|
-  comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyModel', :role => 'comments'})
+  comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyNonRoleModel', :role => 'comments'})
   @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => 1, comments: [comment]})
 end
 

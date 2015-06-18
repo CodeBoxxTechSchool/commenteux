@@ -186,14 +186,18 @@ module Commenteux
     end
 
     describe "Comportement de la méthode 'manage_roles_parameter'" do
-     it "avec paramètres" do
-       list_roles = controller.send(:manage_roles_parameter, 'comments,delivery_man')
+      it "avec des paramètres" do
+        list_roles = controller.send(:manage_roles_parameter, 'comments,delivery_man')
 
-       expect(list_roles).to eq [['comments','Administrateur'],['delivery_man','Livreur']]
+        expect(list_roles).to eq [['comments','Administrateur'],['delivery_man','Livreur']]
       end
-    end
 
-    describe "Comportement de la méthode 'manage_roles_parameter'" do
+      it "avec un paramètre" do
+        list_roles = controller.send(:manage_roles_parameter, 'delivery_man')
+
+        expect(list_roles).to eq [['delivery_man','Livreur']]
+      end
+
       it "sans paramètre" do
         list_roles = controller.send(:manage_roles_parameter, nil)
 

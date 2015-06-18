@@ -14,7 +14,7 @@
     <% unless @list_roles.blank? %>
 
       <%= c.input :role, collection: @list_roles, as: :radio_buttons, :label_method => :last, :value_method => :first,
-                  :input_html => {:data => {:required => true}}, label: 'Rôle',
+                  :input_html => {:data => {:required => true}}, label: 'Commentaire visible à',
                   :item_wrapper_class => 'inline' %>
 
     <% end %>

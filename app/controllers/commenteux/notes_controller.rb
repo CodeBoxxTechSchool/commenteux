@@ -97,11 +97,14 @@ module Commenteux
 
     def manage_roles_parameter(roles_parameter)
       roles = []
-      if roles_parameter and roles_parameter.include?(',')
-        splitted = roles_parameter.split(',')
-        for str in splitted do
-          values = [str, I18n.t(str)]
-          roles << values
+      unless roles_parameter.blank?
+        if roles_parameter.include?(',')
+          splitted = roles_parameter.split(',')
+          for str in splitted do
+            roles << [str, I18n.t(str)]
+          end
+        else
+          roles << [roles_parameter, I18n.t(roles_parameter)]
         end
       end
       roles
