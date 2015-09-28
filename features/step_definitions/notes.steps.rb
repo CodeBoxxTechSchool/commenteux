@@ -13,16 +13,32 @@ When(/^J'accède la page 'index' du gem avec des rôles$/) do
   visit '/commenteux/dummy_model/1?roles=comments,delivery_man'
 end
 
+When(/^J'accède la page 'index' du gem avec des rôles et ne doit pas afficher la liste des notes$/) do
+  visit '/commenteux/dummy_model/1?roles=comments,delivery_man&display_list_notes=false'
+end
+
 When(/^J'accède la page 'index' du gem sans rôle$/) do
   visit '/commenteux/dummy_no_role_model/1'
+end
+
+When(/^J'accède la page 'index' du gem sans rôle et ne doit pas afficher la liste des notes$/) do
+  visit '/commenteux/dummy_no_role_model/1?display_list_notes=false'
 end
 
 And(/^J'accède la page 'new' du gem avec des rôles$/) do
   visit '/commenteux/dummy_model/1/new?roles=comments,delivery_man'
 end
 
+And(/^J'accède la page 'new' du gem avec des rôles et ne doit pas afficher la liste des notes$/) do
+  visit '/commenteux/dummy_model/1/new?roles=comments,delivery_man&display_list_notes=false'
+end
+
 And(/^J'accède la page 'new' du gem sans rôle$/) do
   visit '/commenteux/dummy_no_role_model/1/new'
+end
+
+And(/^J'accède la page 'new' du gem sans rôle et ne doit pas afficher la liste des notes$/) do
+  visit '/commenteux/dummy_no_role_model/1/new?display_list_notes=false'
 end
 
 Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affichée$/) do
@@ -33,6 +49,18 @@ Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affi
   page.should have_content('note 1 administrateur')
   page.should have_content('note 2 livreur')
   page.has_xpath?('//table')
+  page.should have_link('Nouveau')
+end
+
+Then(/^la page d'affichage pour DummyModel est affichée sans la liste des commentaires$/) do
+  page.should_not have_content('Commentaire')
+  page.should_not have_content('Fait par')
+  page.should_not have_content('Date')
+  page.should_not have_content('Rôle')
+  page.should_not have_content('note 1 administrateur')
+  page.should_not have_content('note 2 livreur')
+  page.has_xpath?('//table')
+  page.should have_link('Nouveau')
 end
 
 Then(/^la page d'affichage de la liste des commentaires pour DummyNoRoleModel est affichée$/) do
@@ -42,6 +70,17 @@ Then(/^la page d'affichage de la liste des commentaires pour DummyNoRoleModel es
   page.should_not have_content('Rôle')
   page.should have_content('note 3 administrateur')
   page.has_xpath?('//table')
+  page.should have_link('Nouveau')
+end
+
+Then(/^la page d'affichage pour DummyNoRoleModel est affichée sans la liste des commentaires$/) do
+  page.should_not have_content('Commentaire')
+  page.should_not have_content('Fait par')
+  page.should_not have_content('Date')
+  page.should_not have_content('Rôle')
+  page.should_not have_content('note 3 administrateur')
+  page.has_xpath?('//table')
+  page.should have_link('Nouveau')
 end
 
 And(/^le lien "(.*?)" s'affiche$/) do |link_name|
@@ -67,6 +106,10 @@ end
 
 And(/^le nouveau commentaire saisi "(.*?)" s'y trouve$/) do |arg1|
   page.should have_content(arg1)
+end
+
+And(/^le nouveau commentaire saisi "(.*?)" ne s'y trouve pas$/) do |comment|
+  page.should_not have_content(comment)
 end
 
 And(/^le nouveau commentaire "(.*?)" est bien saisi dans le base de données$/) do |valeur_commentaire|
@@ -99,4 +142,8 @@ end
 
 And(/^je vois le bouton radio "(.*?)" à l'écran$/) do |arg1|
   page.should have_xpath("//label[contains(@class, 'radio') and contains(text(), '#{ arg1 }')]")
+end
+
+And(/^je vois que le bouton annuler contient la variable cachée qui indique de ne pas afficher la liste des commentaires/) do
+  page.should have_xpath("//a[@id='new_notes_cancelled' and @data-display-list-notes='false']")
 end

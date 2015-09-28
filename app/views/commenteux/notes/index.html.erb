@@ -1,39 +1,42 @@
+<% if @display_list_notes == "true" %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="col-md-6">Commentaire</th>
+      <th class="col-md-2">Fait par</th>
+      <th class="col-md-2">Date</th>
+      <% if display_role?(@roles) %>
+        <th class="col-md-2">Rôle</th>
+      <% end %>
+    </tr>
+    </thead>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th class="col-md-6">Commentaire</th>
-    <th class="col-md-2">Fait par</th>
-    <th class="col-md-2">Date</th>
-    <% if display_role?(@roles) %>
-      <th class="col-md-2">Rôle</th>
-    <% end %>
-  </tr>
-  </thead>
-
-  <% @comments.each do |comment| %>
-      <tr>
-        <td>
-          <%= comment.comment %>
-        </td>
-        <td>
-          <%= user_lookup(comment.user_id) %>
-        </td>
-        <td>
-          <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M:%S") %>
-        </td>
-        <% if display_role?(@roles) %>
+    <% @comments.each do |comment| %>
+        <tr>
           <td>
-             <%= I18n.t(comment.role) %>
+            <%= comment.comment %>
           </td>
-        <% end %>
-      </tr>
-  <% end %>
-</table>
-<br/>
+          <td>
+            <%= user_lookup(comment.user_id) %>
+          </td>
+          <td>
+            <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M:%S") %>
+          </td>
+          <% if display_role?(@roles) %>
+            <td>
+               <%= I18n.t(comment.role) %>
+            </td>
+          <% end %>
+        </tr>
+    <% end %>
+  </table>
+  <br/>
+<% end %>
 
 <%= link_to "Nouveau", "#", :id => "new_notes_link", :class => 'btn btn-primary',
             :data => {:parent => @parent_div,
                       :resource => @resource.downcase,
                       :id => @resource_id,
-                      :roles => @roles} %>
+                      :roles => @roles,
+                      :display_list_notes => @display_list_notes
+            } %>

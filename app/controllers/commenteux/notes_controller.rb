@@ -8,30 +8,23 @@ module Commenteux
       resource = fetch_resource
       @roles = params[:roles]
       list_roles = manage_roles_parameter(params[:roles])
-      @comments = get_comments(resource, list_roles)
+      @display_list_notes = params[:display_list_notes] || "true"
+      @comments = get_comments(resource, list_roles) if @display_list_notes == "true"
       @parent_div = params[:parent_div]
 
-      if request.xhr?
-        render :layout => false
-      end
-
+      render :layout => false if request.xhr?
     end
 
     def new
       resource = fetch_resource
       @roles = params[:roles]
       @list_roles = manage_roles_parameter(params[:roles])
-      role = nil
-      if @list_roles and @list_roles.length > 0
-       role = @list_roles[0][0]
-      end
+      role = @list_roles[0][0] if @list_roles and @list_roles.length > 0
       @comments = get_comment_model_method(resource, role).new
       @parent_div = params[:parent_div]
+      @display_list_notes = params[:display_list_notes] || "true"
 
-      if request.xhr?
-        render :layout => false
-      end
-
+      render :layout => false if request.xhr?
     end
 
     def create
@@ -40,10 +33,10 @@ module Commenteux
       get_comment_model_method(resource, params[:comments][:role]).create(comments_params)
       @parent_div = params[:parent_div]
       roles = ''
-      if params[:roles]
-        roles = '&roles=' + params[:roles]
-      end
-      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles
+      roles = '&roles=' + params[:roles] if params[:roles]
+      display_list_notes = params[:display_list_notes] || "true"
+
+      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{display_list_notes}"
     end
 
     protected
@@ -78,10 +71,10 @@ module Commenteux
       comments = []
       if roles and roles.length > 0
         roles.each do |role|
-          comments += get_comment_model_method(resource, role[0]).all
+          comments += get_comment_model_method(resource, role[0]).to_a
         end
       else
-        comments = get_comment_model_method(resource, nil).all
+        comments = get_comment_model_method(resource, nil).to_a
       end
       comments
     end

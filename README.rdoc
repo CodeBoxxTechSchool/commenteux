@@ -50,10 +50,12 @@ Add acts_as_commentable in your model who will have comments
 Call url of commenteux screens, for exemple, like that:
 
   <%= link_to "<i class='icon-file-text text-blue'></i> Notes".html_safe,
-                "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target&roles=public,private",
+                "/commenteux/client::contract/#{@contract.id}?parent_div=ajax_target&roles=public,private&display_list_notes=true",
                 :id => "notes_tab", :data => {:remote => true} %>
 
 where roles is obligated when specific roles are declared in the model.
+Parameter display_list_notes is optional. The gem will set by default to true. Provides the ability to hide the list of
+comments in the index page if the parameter is false.
 
 With a binding like that in your application.js
 
@@ -63,7 +65,7 @@ With a binding like that in your application.js
     $('#ajax_target').html(xhr.responseText)
 
 ==== Rails Internationalization (en.yml)
-If specific roles of acts_as_commentable are declared in model, declare their labels under en: like that:
+If specific roles of acts_as_commentable are declared in model, declare their labels under en: like
 
   en:
     public: "Administrator"

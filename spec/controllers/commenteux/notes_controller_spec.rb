@@ -42,14 +42,27 @@ module Commenteux
       end
 
       it "si l'appel provient d'un call Ajax, on n'affiche pas de layout" do
-
         expect(DummyModel).to receive(:find).with('1') {@dummy_model}
         expect(@dummy_model).to receive(:comments) {@comments}
-        expect(@comments).to receive(:all) {[]}
+        expect(@comments).to receive(:to_a) {[]}
         xhr :get, 'index', 'resource' => 'dummy_model', 'resource_id' => '1'
 
         assert_template layout: false
 
+      end
+
+      it "le paramètre display_list_notes est à false alors les notes ne sont pas recherchées" do
+        comment_comments = double("comment_comments")
+        delivery_man_comments = double("delivery_man_comments")
+        list_roles = [comment_comments, delivery_man_comments]
+
+        expect(DummyModel).to receive(:find).with('1') {@dummy_model}
+
+        expect(subject).to receive(:manage_roles_parameter).with('comments,delivery_man') {list_roles}
+
+        get 'index', resource: 'dummy_model', resource_id: '1', roles: 'comments,delivery_man', display_list_notes: 'false'
+
+        assert_template layout: 'application'
       end
 
     end
@@ -104,7 +117,7 @@ module Commenteux
 
         post 'create', 'resource' => 'dummy_model', 'resource_id' => '1', 'parent_div' => 'parent_div', 'comments' => { 'title' => 'Titre', 'comment' => 'Commentaire', 'role' => 'delivery_man'}, 'roles' => 'comments,delivery_man'
 
-        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&roles=comments,delivery_man")
+        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&roles=comments,delivery_man&display_list_notes=true")
 
       end
 
@@ -116,7 +129,18 @@ module Commenteux
 
         post 'create', 'resource' => 'dummy_model', 'resource_id' => '1', 'parent_div' => 'parent_div', 'comments' => { 'title' => 'Titre', 'comment' => 'Commentaire'}
 
-        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div")
+        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=true")
+      end
+
+      it "Doit créer le commentaire saisi sur la ressource en paramètre, rôle non spécifié et display list notes spécifié en paramètre" do
+
+        expect(DummyModel).to receive(:find).with('1') {@dummy_model}
+        expect(@dummy_model).to receive(:send).with('comments') {@comments}
+        expect(@comments).to receive(:create).with({ 'title' => 'Titre', 'comment' => 'Commentaire'})
+
+        post 'create', 'resource' => 'dummy_model', 'resource_id' => '1', 'parent_div' => 'parent_div', 'comments' => { 'title' => 'Titre', 'comment' => 'Commentaire'}, display_list_notes: 'false'
+
+        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=false")
       end
     end
 
@@ -147,10 +171,10 @@ module Commenteux
         comments2 = double("comments2")
 
         expect(@dummy_model).to receive(:send).with('comments_comments') {comments1}
-        expect(comments1).to receive(:all) {[comments1]}
+        expect(comments1).to receive(:to_a) {[comments1]}
 
         expect(@dummy_model).to receive(:send).with('delivery_man_comments') {comments2}
-        expect(comments2).to receive(:all) {[comments2]}
+        expect(comments2).to receive(:to_a) {[comments2]}
 
         comments = controller.send(:get_comments, @dummy_model, [['comments','Admin'],['delivery_man','Livreur']])
 
@@ -162,7 +186,7 @@ module Commenteux
         comments1 = double("comments1")
 
         expect(@dummy_model).to receive(:comments) {comments1}
-        expect(comments1).to receive(:all) {[comments1]}
+        expect(comments1).to receive(:to_a) {[comments1]}
 
         comments = controller.send(:get_comments, @dummy_model, nil)
 

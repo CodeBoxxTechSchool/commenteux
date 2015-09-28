@@ -1,4 +1,4 @@
-<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}",
+<%= simple_form_for @comments, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}&display_list_notes=#{@display_list_notes}",
                     :remote => true, :data => {:parent => @parent_div}, wrapper: :bootstrap do |c| %>
 
     <div style="display:none">
@@ -31,7 +31,8 @@
                       :data => {:parent => @parent_div,
                                 :resource => @resource.downcase,
                                 :id => @resource_id,
-                                :roles => @roles} %>
+                                :roles => @roles,
+                                :display_list_notes => @display_list_notes} %>
 
         </div>
       </div>
