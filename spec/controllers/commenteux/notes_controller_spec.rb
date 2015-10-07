@@ -229,5 +229,30 @@ module Commenteux
       end
     end
 
+    # describe "destroy" do
+    #   it "Détruire le commentaire" do
+    #     dummy_model = double
+    #     #comment_model = double
+    #
+    #     expect(DummyModel).to receive(:find).with('1') {dummy_model}
+    #    # expect(dummy_model).to receive(:send).with('comments') {comment_model}
+    #     expect(dummy_model).to receive(:destroy!) {true}
+    #
+    #     delete 'destroy', resource: 'dummy_model', resource_id: '1', format: :js
+    #
+    #     #expect(subject).to redirect_to("/commenteux/dummy_model/1")
+    #
+    #     expect(flash[:success]).to eq "Commentaire supprimé avec succès"
+    #   end
+    #
+    #   it "Commentaire n'existe pas dans le base de données" do
+    #     expect(DummyModel).to receive(:find).with('1').and_raise(ActiveRecord::RecordNotFound)
+    #
+    #     delete 'destroy', resource: 'dummy_model', resource_id: '1', format: :js
+    #
+    #     expect(flash[:error]).to eq "Ce commentaire n'existe plus."
+    #   end
+    # end
+
   end
 end

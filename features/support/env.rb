@@ -10,6 +10,7 @@ ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/dummy"
 
 require 'cucumber/rails'
 require 'capybara-screenshot/cucumber'
+require 'cancan'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -67,3 +68,11 @@ After do |scenario|
   save_page if scenario.failed?
 end
 
+def setup_authorized_user
+   @user = Fabricate(:user_normal)
+   #ability = Ability.new(@user)
+end
+#
+# def setup_authorized_admin
+#   @user = Fabricate(:admin)
+# end

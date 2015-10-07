@@ -39,6 +39,21 @@ module Commenteux
       redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{display_list_notes}"
     end
 
+    # def destroy
+    #   begin
+    #     @comment = fetch_resource
+    #     #comments_params
+    #     #@comment = resource.find(params[:comments][:id])
+    #     #@comment = get_comment_model_method(resource, params[:comments][:role]).find(params[:comments][:id])
+    #     @comment.destroy!
+    #     flash.now[:success] = "Commentaire supprimé avec succès"
+    #   rescue ActiveRecord::RecordNotFound
+    #     flash.now[:error] = "Ce commentaire n'existe plus."
+    #   # rescue ActiveRecord::RecordNotDestroyed
+    #   #   flash.now[:error] = "Cette adresse ne peut être supprimée car elle est attachée à un contrat."
+    #   end
+    # end
+
     protected
     def comments_params
       comments_permit_fields = [:title, :comment, :user_id, :role, :roles]

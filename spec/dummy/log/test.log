@@ -1,0 +1,562 @@
+  [1m[36mActiveRecord::SchemaMigration Load (7.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#create as HTML
+  Parameters: {"parent_div"=>"parent_div", "comments"=>{"title"=>"Titre", "comment"=>"Commentaire"}, "display_list_notes"=>"false", "resource"=>"dummy_model", "resource_id"=>"1"}
+Redirected to http://test.host/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=false
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#create as HTML
+  Parameters: {"parent_div"=>"parent_div", "comments"=>{"title"=>"Titre", "comment"=>"Commentaire"}, "resource"=>"dummy_model", "resource_id"=>"1"}
+Redirected to http://test.host/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=true
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#create as HTML
+  Parameters: {"parent_div"=>"parent_div", "comments"=>{"title"=>"Titre", "comment"=>"Commentaire", "role"=>"delivery_man"}, "roles"=>"comments,delivery_man", "resource"=>"dummy_model", "resource_id"=>"1"}
+Redirected to http://test.host/commenteux/dummy_model/1?parent_div=parent_div&roles=comments,delivery_man&display_list_notes=true
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"roles"=>"comments,delivery_man", "display_list_notes"=>"false", "resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#index as JS
+  Parameters: {"resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"roles"=>"comments,delivery_man", "resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#new as JS
+  Parameters: {"resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#new as HTML
+  Parameters: {"roles"=>"comments,delivery_man", "resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by Commenteux::NotesController#new as HTML
+  Parameters: {"resource"=>"dummy_model", "resource_id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateUsers (20151007143207)
+  [1m[35m (43.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151007143207')
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:04:13', '2015-10-07 15:04:13')
+  [1m[36m (12.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:04:13', 1, 'blah', '2015-10-07 15:04:13')
+  [1m[36mSQL (4.5ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:04:13' WHERE `comments`.`id` = 1[0m
+  [1m[35m (15.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:04:16 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.3ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (11.8ms)
+Completed 500 Internal Server Error in 47ms
+  [1m[35m (0.4ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (6.9ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (19.7ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (6.0ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (5.8ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (6.5ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:04:29', '2015-10-07 15:04:29')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:04:29', 1, 'blah', '2015-10-07 15:04:29')
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:04:29' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:04:31 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.6ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (13.7ms)
+Completed 500 Internal Server Error in 44ms
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (7.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (13.3ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (5.4ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (7.6ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (5.8ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.3ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:07:47', '2015-10-07 15:07:47')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:07:47', 1, 'blah', '2015-10-07 15:07:47')
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:07:47' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:07:49 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.3ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.6ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (12.0ms)
+Completed 500 Internal Server Error in 38ms
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (6.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (12.9ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (5.1ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (5.3ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (5.2ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:08:49', '2015-10-07 15:08:49')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:08:49', 1, 'blah', '2015-10-07 15:08:49')
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:08:49' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:08:58 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.3ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 28ms
+  [1m[35m (0.5ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (7.8ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (11.3ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (3.9ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (3.3ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (14.5ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:09:08', '2015-10-07 15:09:08')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:09:08', 1, 'blah', '2015-10-07 15:09:08')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:09:08' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:09:10 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.4ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (7.2ms)
+Completed 500 Internal Server Error in 23ms
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (7.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (23.3ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (4.5ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (3.6ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (3.8ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:09:37', '2015-10-07 15:09:37')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:09:37', 1, 'blah', '2015-10-07 15:09:37')
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:09:37' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (6.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (23.2ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (4.7ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (3.2ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (3.2ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:11:05', '2015-10-07 15:11:05')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:11:05', 1, 'blah', '2015-10-07 15:11:05')
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:11:05' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:11:07 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.4ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (13.4ms)
+Completed 500 Internal Server Error in 60ms
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  SELECT DATABASE() as db
+  [1m[36m (7.3ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (15.8ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (4.1ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (3.6ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (3.6ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:14:09', '2015-10-07 15:14:09')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:14:09', 1, 'blah', '2015-10-07 15:14:09')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:14:09' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`email`, `name`) VALUES ('user@user.com', 'User')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:14:11 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[35mDummyNoRoleModel Load (0.3ms)[0m  SELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC[0m
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (14.5ms)
+Completed 500 Internal Server Error in 41ms
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (6.8ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'[0m
+  [1m[35m (18.0ms)[0m  TRUNCATE TABLE `comments`;
+  [1m[36m (4.6ms)[0m  [1mTRUNCATE TABLE `dummy_models`;[0m
+  [1m[35m (3.9ms)[0m  TRUNCATE TABLE `dummy_no_role_models`;
+  [1m[36m (3.5ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:14:51', '2015-10-07 15:14:51')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:14:51', 1, 'blah', '2015-10-07 15:14:51')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:14:51' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:14:53 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.5ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (16.4ms)
+Completed 500 Internal Server Error in 39ms
+  [1m[36m (0.6ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.3ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.2ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.7ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (9.5ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.5ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.2ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.4ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:17:14', '2015-10-07 15:17:14')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:17:14', 1, 'blah', '2015-10-07 15:17:14')
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:17:14' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:17:34 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.4ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (21.2ms)
+Completed 500 Internal Server Error in 46ms
+  [1m[36m (0.3ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (6.9ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (12.6ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (3.8ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.6ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.4ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:18:53', '2015-10-07 15:18:53')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:18:53', 1, 'blah', '2015-10-07 15:18:53')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:18:53' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:18:58 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.4ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (24.8ms)
+Completed 500 Internal Server Error in 51ms
+  [1m[36m (0.3ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.2ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (6.7ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (10.3ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (3.6ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.2ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.7ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:19:53', '2015-10-07 15:19:53')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:19:53', 1, 'blah', '2015-10-07 15:19:53')
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:19:53' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:19:58 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.4ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (35180.8ms)
+Completed 500 Internal Server Error in 54217ms
+  [1m[36m (0.3ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.2ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (6.5ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (9.7ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.3ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.8ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.2ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:21:28', '2015-10-07 15:21:28')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:21:28', 1, 'blah', '2015-10-07 15:21:28')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:21:28' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.8ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:21:31 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.6ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (7610.6ms)
+Completed 200 OK in 16861ms (Views: 7785.1ms | ActiveRecord: 18.7ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2015-10-07 11:21:48 -0400
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-10-07 11:21:48 -0400
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.9ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (15.3ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.6ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.7ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.4ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:26:16', '2015-10-07 15:26:16')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:26:16', 1, 'blah', '2015-10-07 15:26:16')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:26:16' WHERE `comments`.`id` = 1[0m
+  [1m[35m (4.4ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:26:21 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.4ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (2703.1ms)
+Completed 500 Internal Server Error in 5571ms
+  [1m[36m (0.4ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.2ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (10.5ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.3ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (4.2ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (2.9ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:29:55', '2015-10-07 15:29:55')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:29:55', 1, 'blah', '2015-10-07 15:29:55')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:29:55' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:29:59 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.3ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (3974.7ms)
+Completed 500 Internal Server Error in 6367ms
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (6.9ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (10.1ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (3.8ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (2.9ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.1ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:30:40', '2015-10-07 15:30:40')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:30:40', 1, 'blah', '2015-10-07 15:30:40')
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:30:40' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:30:42 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.6ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 34ms (Views: 26.6ms | ActiveRecord: 2.5ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2015-10-07 11:30:42 -0400
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-10-07 11:30:42 -0400
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.5ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (11.4ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.2ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.0ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.3ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:31:30', '2015-10-07 15:31:30')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:31:30', 1, 'blah', '2015-10-07 15:31:30')
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:31:30' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:31:32 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.4ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 30ms (Views: 22.3ms | ActiveRecord: 2.3ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2015-10-07 11:31:32 -0400
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-10-07 11:31:32 -0400
+  [1m[36m (0.1ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.9ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (20.7ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (4.1ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (2.7ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (2.9ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:32:08', '2015-10-07 15:32:08')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:32:08', 1, 'blah', '2015-10-07 15:32:08')
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:32:08' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:32:10 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.2ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 28ms (Views: 21.6ms | ActiveRecord: 1.7ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2015-10-07 11:32:10 -0400
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-10-07 11:32:10 -0400
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (6.5ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (16.6ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (3.7ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (3.1ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.0ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `comments` (`comment`, `commentable_type`, `created_at`, `updated_at`) VALUES ('note 3 administrateur', 'DummyNonRoleModel', '2015-10-07 15:32:20', '2015-10-07 15:32:20')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `dummy_no_role_models` (`created_at`, `id`, `text`, `updated_at`) VALUES ('2015-10-07 15:32:20', 1, 'blah', '2015-10-07 15:32:20')
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `comments` SET `commentable_id` = 1, `commentable_type` = 'DummyNoRoleModel', `updated_at` = '2015-10-07 15:32:20' WHERE `comments`.`id` = 1[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Started GET "/commenteux/dummy_no_role_model/1" for 127.0.0.1 at 2015-10-07 11:32:22 -0400
+Processing by Commenteux::NotesController#index as HTML
+  Parameters: {"resource"=>"dummy_no_role_model", "resource_id"=>"1"}
+  [1m[36mDummyNoRoleModel Load (0.3ms)[0m  [1mSELECT `dummy_no_role_models`.* FROM `dummy_no_role_models` WHERE `dummy_no_role_models`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'DummyNoRoleModel' ORDER BY created_at ASC
+  Rendered /Users/nickdemers/Documents/Projects/workspace/commenteux/app/views/commenteux/notes/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 49ms (Views: 24.9ms | ActiveRecord: 18.5ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2015-10-07 11:32:22 -0400
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-10-07 11:32:22 -0400
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (7.9ms)[0m  select table_name from information_schema.views where table_schema = 'notes_dummy_bd_test'
+  [1m[36m (16.9ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (2.5ms)[0m  TRUNCATE TABLE `dummy_models`;
+  [1m[36m (2.8ms)[0m  [1mTRUNCATE TABLE `dummy_no_role_models`;[0m
+  [1m[35m (3.6ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m

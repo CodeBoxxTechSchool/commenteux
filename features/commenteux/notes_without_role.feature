@@ -7,6 +7,7 @@ Fonctionnalité: En tant qu'utilisateur,
     Étant donné j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id 1
 
   Scénario: Affichage de la page de liste de commentaire
+    #Et je prétends être connecté comme utilisateur normal
     Quand J'accède la page 'index' du gem sans rôle
     Alors la page d'affichage de la liste des commentaires pour DummyNoRoleModel est affichée
 

@@ -12,7 +12,8 @@
     </thead>
 
     <% @comments.each do |comment| %>
-        <tr>
+        <!--<tr data-id="<%# comment.id %>">-->
+      <tr>
           <td>
             <%= comment.comment %>
           </td>
@@ -33,6 +34,7 @@
   <br/>
 <% end %>
 
+<% #if can? :manage, Comment %>
 <%= link_to "Nouveau", "#", :id => "new_notes_link", :class => 'btn btn-primary',
             :data => {:parent => @parent_div,
                       :resource => @resource.downcase,
@@ -40,3 +42,4 @@
                       :roles => @roles,
                       :display_list_notes => @display_list_notes
             } %>
+<% #end %>
