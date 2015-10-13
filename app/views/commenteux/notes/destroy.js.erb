@@ -1,0 +1,3 @@
+<% if !@comment.nil? and @comment.errors.messages.empty? %>
+  $('.comment[data-id="<%= @comment.id %>"]').remove();
+<% end %>

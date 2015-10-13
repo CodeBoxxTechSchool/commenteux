@@ -8,6 +8,7 @@ gem 'acts_as_commentable'
 gem "simple_form"
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'cancan'
 
 group :development, :test do
   gem 'rspec-rails'

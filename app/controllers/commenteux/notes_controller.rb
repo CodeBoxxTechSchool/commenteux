@@ -6,44 +6,89 @@ module Commenteux
 
     def index
       resource = fetch_resource
-      @roles = params[:roles]
+      fetch_params
       list_roles = manage_roles_parameter(params[:roles])
-      @display_list_notes = params[:display_list_notes] || "true"
       @comments = get_comments(resource, list_roles) if @display_list_notes == "true"
-      @parent_div = params[:parent_div]
 
       render :layout => false if request.xhr?
     end
 
     def new
       resource = fetch_resource
-      @roles = params[:roles]
+      fetch_params
       @list_roles = manage_roles_parameter(params[:roles])
       role = @list_roles[0][0] if @list_roles and @list_roles.length > 0
-      @comments = get_comment_model_method(resource, role).new
-      @parent_div = params[:parent_div]
-      @display_list_notes = params[:display_list_notes] || "true"
+      @comment = get_comment_model_method(resource, role).new
 
       render :layout => false if request.xhr?
     end
 
     def create
       resource = fetch_resource
-      comments_params
-      get_comment_model_method(resource, params[:comments][:role]).create(comments_params)
-      @parent_div = params[:parent_div]
+      fetch_params
+      comment_params
       roles = ''
-      roles = '&roles=' + params[:roles] if params[:roles]
-      display_list_notes = params[:display_list_notes] || "true"
+      if @roles
+        roles = '&roles=' + @roles
+        comment_role = params[:comments][:role]
+      end
+      get_comment_model_method(resource, comment_role).create(comment_params)
 
-      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{display_list_notes}"
+      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+    end
+
+    def edit
+      resource = fetch_resource
+      fetch_params
+      @list_roles = manage_roles_parameter(params[:roles])
+      @comment = get_comment_model_method(resource, params[:comment_role]).find(params[:id])
+
+      render :layout => false if request.xhr?
+    end
+
+    def update
+      begin
+        resource = fetch_resource
+        fetch_params
+        comment_params
+        roles = ''
+        unless @roles.blank?
+          roles = '&roles=' + @roles
+          comment_role = params[:comments][:role]
+        end
+        @comment = get_comment_model_method(resource, comment_role).find(params[:id])
+
+        if @comment.update(comment_params)
+         #flash[:success] = "Commentaire modifié avec succès"
+         redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+        else
+          #flash[:danger] = "Impossible de sauvegarder le commentaire"
+          render action: 'edit', :layout => false
+        end
+      rescue ActiveRecord::RecordNotFound
+        #flash[:danger] = "Ce commentaire n'existe plus."
+        redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+      end
+    end
+
+    def destroy
+      begin
+        resource = fetch_resource
+        @comment = get_comment_model_method(resource, params[:comment_role]).find(params[:id])
+        @comment.destroy!
+        #flash[:success] = "Commentaire supprimé avec succès"
+      rescue ActiveRecord::RecordNotFound
+        #flash[:error] = "Ce commentaire n'existe plus."
+      end
+      respond_to do |format|
+        format.js
+      end
     end
 
     protected
-    def comments_params
-      comments_permit_fields = [:title, :comment, :user_id, :role, :roles]
-      params.require(:comments).permit(
-          comments_permit_fields)
+    def comment_params
+      comment_permit_fields = [:title, :comment, :user_id, :role, :id]
+      params.require(:comments).permit(comment_permit_fields)
     end
 
     def fetch_resource
@@ -52,6 +97,12 @@ module Commenteux
       @resourceKlass = eval(@class_name)
       @resource_id = params[:resource_id]
       @resourceKlass.find(@resource_id)
+    end
+
+    def fetch_params
+      @roles = params[:roles]
+      @parent_div = params[:parent_div]
+      @display_list_notes = params[:display_list_notes] || "true"
     end
 
     def classify_namespace(const)
@@ -80,12 +131,12 @@ module Commenteux
     end
 
     def get_comment_model_method(resource, role)
-      if role
-        role_comments = role + "_comments"
+      if role.blank?
+        role_comment = "comments"
       else
-        role_comments = "comments"
+        role_comment = role + "_comments"
       end
-      resource.send(role_comments)
+      resource.send(role_comment)
     end
 
     def manage_roles_parameter(roles_parameter)

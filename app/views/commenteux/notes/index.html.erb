@@ -1,33 +1,61 @@
+<% role_current = '' %>
 <% if @display_list_notes == "true" %>
   <table class="table">
     <thead>
     <tr>
-      <th class="col-md-6">Commentaire</th>
+      <th class="col-md-5">Commentaire</th>
       <th class="col-md-2">Fait par</th>
       <th class="col-md-2">Date</th>
       <% if display_role?(@roles) %>
         <th class="col-md-2">Rôle</th>
       <% end %>
+      <% if can? :manage, Comment %>
+        <th class="col-md-1">Suppr.</th>
+      <% end %>
     </tr>
     </thead>
 
     <% @comments.each do |comment| %>
-        <tr>
-          <td>
+      <% if display_role?(@roles) %>
+        <% role_current = comment.role %>
+      <% end %>
+      <tr class="comment" data-id="<%= comment.id %>">
+        <td>
+          <% if can? :manage, Comment %>
+            <%= link_to comment.comment, "#", class: 'edit_comment',
+                        :data => {parent: @parent_div,
+                                  resource: @resource.downcase,
+                                  resource_id: @resource_id,
+                                  id: comment.id,
+                                  comment_role: role_current,
+                                  roles: @roles,
+                                  display_list_notes: @display_list_notes
+                        } %>
+          <% else %>
             <%= comment.comment %>
-          </td>
-          <td>
-            <%= user_lookup(comment.user_id) %>
-          </td>
-          <td>
-            <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M:%S") %>
-          </td>
-          <% if display_role?(@roles) %>
-            <td>
-               <%= I18n.t(comment.role) %>
-            </td>
           <% end %>
-        </tr>
+        </td>
+        <td>
+          <%= user_lookup(comment.user_id) %>
+        </td>
+        <td>
+          <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%Y-%m-%d %H:%M:%S") %>
+        </td>
+        <% if display_role?(@roles) %>
+          <td>
+             <%= I18n.t(comment.role) %>
+          </td>
+        <% end %>
+        <% if can? :manage, Comment %>
+          <td>
+            <%= link_to "#", class: 'remove_comment',
+                        data: {confirm: 'Êtes-vous certain?', resource: @resource.downcase,
+                               resource_id: @resource_id, id: comment.id, comment_role: role_current} do %>
+              <%= icon 'remove-sign' %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
     <% end %>
   </table>
   <br/>

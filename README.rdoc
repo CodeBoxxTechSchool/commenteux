@@ -26,9 +26,12 @@ Mount the commenteux gem in your routes:
 
 The routes that will be available are :
 
-       GET  /commenteux/:resource/:resource_id(.:format)     commenteux/notes#index
-       GET  /commenteux/:resource/:resource_id/new(.:format) commenteux/notes#new
-       POST /commenteux/:resource/:resource_id(.:format)     commenteux/notes#create
+       GET  /commenteux/:resource/:resource_id(.:format)            commenteux/notes#index
+       GET  /commenteux/:resource/:resource_id/new(.:format)        commenteux/notes#new
+       POST /commenteux/:resource/:resource_id(.:format)            commenteux/notes#create
+       GET    /commenteux/:resource/:resource_id/:id/edit(.:format) commenteux/notes#edit
+       PATCH  /commenteux/:resource/:resource_id/:id(.:format)      commenteux/notes#update
+       DELETE /commenteux/:resource/:resource_id(.:format)          commenteux/notes#destroy {:format=>:js}
 
 where :resource is the name of your model (you can use namespace)
 
@@ -39,6 +42,13 @@ Add acts_as_commentable in your model who will have comments
     acts_as_commentable :private, :public
 
 :private, :public are a example if specific role needed.
+
+==== Model - Ability
+By default, only the user with admin role can modify or delete a comment. You can add others rights into your ability class.
+
+  if @user.has_role?(:admin_shipment)
+    can :manage, Comment
+  end
 
 ====Include the needed javascript file in your application.js or application.js.coffee
 

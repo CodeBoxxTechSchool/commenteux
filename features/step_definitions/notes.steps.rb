@@ -1,44 +1,24 @@
-When(/^j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id (\d+)$/) do |arg1|
+When(/^j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id (\d+)$/) do |id|
   comment1 = Fabricate(:comment, {:comment => 'note 1 administrateur', :commentable_type => 'DummyModel', :role => 'comments'})
   comment2 = Fabricate(:comment, {:comment => 'note 2 livreur', :commentable_type => 'DummyModel', :role => 'delivery_man'})
-  @dummy_model = Fabricate(:dummy_model, {:id => 1, comments_comments: [comment1], delivery_man_comments: [comment2]})
+  @dummy_model = Fabricate(:dummy_model, {:id => id, comments_comments: [comment1], delivery_man_comments: [comment2]})
 end
 
-When(/^j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id (\d+)$/) do |arg1|
+When(/^j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id (\d+)$/) do |id|
   comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyNonRoleModel', :role => 'comments'})
-  @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => 1, comments: [comment]})
+  @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => id, comments: [comment]})
 end
 
-When(/^J'accède la page 'index' du gem avec des rôles$/) do
-  visit '/commenteux/dummy_model/1?roles=comments,delivery_man'
+And(/^J'accède la page 'index' du modèle "(.*?)" du gem avec les paramètres "(.*?)"$/) do |model, params|
+  visit "/commenteux/#{model}/1#{params}"
 end
 
-When(/^J'accède la page 'index' du gem avec des rôles et ne doit pas afficher la liste des notes$/) do
-  visit '/commenteux/dummy_model/1?roles=comments,delivery_man&display_list_notes=false'
+And(/^J'accède la page 'new' du modèle "(.*?)" du gem avec les paramètres "(.*?)"$/) do |model, params|
+  visit "/commenteux/#{model}/1/new#{params}"
 end
 
-When(/^J'accède la page 'index' du gem sans rôle$/) do
-  visit '/commenteux/dummy_no_role_model/1'
-end
-
-When(/^J'accède la page 'index' du gem sans rôle et ne doit pas afficher la liste des notes$/) do
-  visit '/commenteux/dummy_no_role_model/1?display_list_notes=false'
-end
-
-And(/^J'accède la page 'new' du gem avec des rôles$/) do
-  visit '/commenteux/dummy_model/1/new?roles=comments,delivery_man'
-end
-
-And(/^J'accède la page 'new' du gem avec des rôles et ne doit pas afficher la liste des notes$/) do
-  visit '/commenteux/dummy_model/1/new?roles=comments,delivery_man&display_list_notes=false'
-end
-
-And(/^J'accède la page 'new' du gem sans rôle$/) do
-  visit '/commenteux/dummy_no_role_model/1/new'
-end
-
-And(/^J'accède la page 'new' du gem sans rôle et ne doit pas afficher la liste des notes$/) do
-  visit '/commenteux/dummy_no_role_model/1/new?display_list_notes=false'
+And(/^J'accède la page 'edit' du modèle "(.*?)" du gem avec les paramètres "(.*?)"$/) do |model, params|
+  visit "/commenteux/#{model}/1/1/edit#{params}"
 end
 
 Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affichée$/) do
@@ -46,8 +26,8 @@ Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affi
   page.should have_content('Fait par')
   page.should have_content('Date')
   page.should have_content('Rôle')
-  page.should have_content('note 1 administrateur')
-  page.should have_content('note 2 livreur')
+  #page.should have_content('note 1 administrateur')
+  #page.should have_content('note 2 livreur')
   page.has_xpath?('//table')
   page.should have_link('Nouveau')
 end
@@ -83,10 +63,6 @@ Then(/^la page d'affichage pour DummyNoRoleModel est affichée sans la liste des
   page.should have_link('Nouveau')
 end
 
-And(/^le lien "(.*?)" s'affiche$/) do |link_name|
-  find_link(link_name).visible?
-end
-
 And(/^je clique sur le lien "(.*?)"$/) do |link_name|
   click_link(link_name)
 end
@@ -112,20 +88,12 @@ And(/^le nouveau commentaire saisi "(.*?)" ne s'y trouve pas$/) do |comment|
   page.should_not have_content(comment)
 end
 
-And(/^le nouveau commentaire "(.*?)" est bien saisi dans le base de données$/) do |valeur_commentaire|
+And(/^le nouveau commentaire "(.*?)" et son rôle "(.*?)" du modèle "(.*?)" ont été bien saisi dans le base de données$/) do |valeur_commentaire, valeur_role, modele|
   comment = Comment.find_by_comment(valeur_commentaire)
   comment.should_not be_nil
-  comment.comment.should eq 'Ceci est un commentaire'
-  comment.commentable_type.should eq 'DummyModel'
-  comment.role.should eq 'delivery_man'
-end
-
-And(/^le nouveau commentaire sans rôle "(.*?)" est bien saisi dans le base de données$/) do |valeur_commentaire|
-  comment = Comment.find_by_comment(valeur_commentaire)
-  comment.should_not be_nil
-  comment.comment.should eq 'Ceci est un commentaire'
-  comment.commentable_type.should eq 'DummyNoRoleModel'
-  comment.role.should eq 'comments'
+  comment.comment.should eq valeur_commentaire
+  comment.commentable_type.should eq modele
+  comment.role.should eq valeur_role
 end
 
 And(/^je saisi le champ radio "(.*?)"$/) do |nom_champ|
@@ -146,4 +114,48 @@ end
 
 And(/^je vois que le bouton annuler contient la variable cachée qui indique de ne pas afficher la liste des commentaires/) do
   page.should have_xpath("//a[@id='new_notes_cancelled' and @data-display-list-notes='false']")
+end
+
+And(/^je vois le bouton supprimer du commentaire "(.*?)"/) do |comment_id|
+  page.should have_xpath("//a[@class='remove_comment' and @data-id='#{comment_id}']")
+end
+
+And(/^je ne vois pas le bouton supprimer du commentaire "(.*?)"/) do |comment_id|
+  page.should_not have_xpath("//a[@class='remove_comment' and @data-id='#{comment_id}']")
+end
+
+And(/^je supprime le commentaire "(.*?)"/) do |comment_id|
+  find("a[data-id='#{comment_id}'][class='remove_comment']").trigger('click')
+end
+
+And(/^je veux modifier le commentaire "(.*?)"/) do |comment_id|
+  find("a[data-id='#{comment_id}'][class='edit_comment']").trigger('click')
+end
+
+And(/^je ne vois pas le contenu "(.*?)"/) do |comment_text|
+  page.should_not have_content(comment_text)
+end
+
+And(/^je vois le contenu "(.*?)"/) do |comment_text|
+  page.should have_content(comment_text)
+end
+
+And(/^je clique sur le bouton "(.*?)"/) do |button_name|
+  click_button(button_name)
+end
+
+And(/^je réponds 'OK' au popup de confirmation/) do
+  page.driver.browser.accept_js_confirms
+end
+
+And(/^je ne vois pas le lien "(.*?)"$/) do |link_name|
+  page.should_not have_link(link_name)
+end
+
+And(/^je vois le lien "(.*?)"$/) do |link_name|
+  page.should have_link(link_name)
+end
+
+And(/^le champ "(.*?)" contient "(.*?)"$/) do |field, value|
+  field_labeled(field).value.should =~ /#{value}/
 end

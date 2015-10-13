@@ -1,0 +1,33 @@
+<%= c.input :title, as: 'hidden' %>
+<%= c.input :comment, :label => 'Commentaire' %>
+<% if defined? current_user %>
+  <%= c.input :user_id, input_html: {value: current_user.id}, as: 'hidden' %>
+<% end %>
+
+<% unless @list_roles.blank? %>
+
+  <%= c.input :role, collection: @list_roles, as: :radio_buttons, :label_method => :last, :value_method => :first,
+              :input_html => {:data => {:required => true}}, label: 'Commentaire visible à',
+              :item_wrapper_class => 'inline' %>
+
+<% end %>
+
+<div class="form-actions form-actions-padding-sm">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-5">
+
+      <button class="btn btn-primary" type="submit" id='save'>
+        <i class="icon-save"></i>
+        Enregistrer
+      </button>
+
+      <%= link_to "Annuler", "#", :id => "new_notes_cancelled", :class => 'btn',
+                  :data => {:parent => @parent_div,
+                            :resource => @resource.downcase,
+                            :id => @resource_id,
+                            :roles => @roles,
+                            :display_list_notes => @display_list_notes} %>
+
+    </div>
+  </div>
+</div>
