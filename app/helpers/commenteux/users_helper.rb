@@ -3,7 +3,7 @@ module Commenteux
 
     def user_lookup(user_id)
       if user_id
-        User.find(user_id).name
+        User.find(user_id).email
       end
     end
 

@@ -4,8 +4,8 @@ Fonctionnalité: En tant qu'utilisateur administrateur,
   Je veux saisir des commentaires pour une entité utilisant act_as_commentable
 
   Contexte:
-    Étant donné j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id 1
-    Et je prétends être connecté comme utilisateur admin
+    Étant donné je prétends être connecté comme utilisateur admin
+    Et j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id 1
 
   Scénario: Affichage de la page de liste de commentaire
     Quand J'accède la page 'index' du modèle "dummy_no_role_model" du gem avec les paramètres ""
@@ -70,7 +70,8 @@ Fonctionnalité: En tant qu'utilisateur administrateur,
 
   Scénario: Affichage de la page de modification d'un commentaire
     Quand J'accède la page 'index' du modèle "dummy_no_role_model" du gem avec les paramètres ""
-    Alors je veux modifier le commentaire "1"
+    Alors la page d'affichage de la liste des commentaires pour DummyNoRoleModel est affichée
+    Et je veux modifier le commentaire "1"
     Et le champ "comments_comment" contient "note 3 administrateur"
     Et je saisi le commentaire "note 3 administrateur test"
     Quand je sauvegarde

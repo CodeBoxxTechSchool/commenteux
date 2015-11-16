@@ -1,11 +1,13 @@
 When(/^j'ai une entité 'DummyModel' avec rôle dans la base de donnée avec le id (\d+)$/) do |id|
-  comment1 = Fabricate(:comment, {:comment => 'note 1 administrateur', :commentable_type => 'DummyModel', :role => 'comments'})
-  comment2 = Fabricate(:comment, {:comment => 'note 2 livreur', :commentable_type => 'DummyModel', :role => 'delivery_man'})
+  user = Fabricate(:user_info)
+  comment1 = Fabricate(:comment, {:comment => 'note 1 administrateur', :commentable_type => 'DummyModel', :role => 'comments', user_id: user.id})
+  comment2 = Fabricate(:comment, {:comment => 'note 2 livreur', :commentable_type => 'DummyModel', :role => 'delivery_man', user_id: user.id})
   @dummy_model = Fabricate(:dummy_model, {:id => id, comments_comments: [comment1], delivery_man_comments: [comment2]})
 end
 
 When(/^j'ai une entité 'DummyNoRoleModel' dans la base de donnée avec le id (\d+)$/) do |id|
-  comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyNonRoleModel', :role => 'comments'})
+  user = Fabricate(:user_info)
+  comment = Fabricate(:comment, {:comment => 'note 3 administrateur', :commentable_type => 'DummyNonRoleModel', :role => 'comments', user_id: user.id})
   @dummy_no_role_model = Fabricate(:dummy_no_role_model, {:id => id, comments: [comment]})
 end
 
