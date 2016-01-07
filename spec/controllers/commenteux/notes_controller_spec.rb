@@ -132,15 +132,18 @@ module Commenteux
         expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=true")
       end
 
-      it "Doit créer le commentaire saisi sur la ressource en paramètre, rôle non spécifié et display list notes spécifié en paramètre" do
+      it "Doit créer le commentaire saisi sur la ressource en paramètre, rôle non spécifié et display list notes spécifié a false en paramètre" do
 
         expect(DummyModel).to receive(:find).with('1') {@dummy_model}
         expect(@dummy_model).to receive(:send).with('comments') {@comments}
         expect(@comments).to receive(:create).with({ 'title' => 'Titre', 'comment' => 'Commentaire', "role"=>"comments"})
 
+        expect(subject).to receive(:get_comments) {@comments}
+
         post :create, resource: 'dummy_model', resource_id: '1', parent_div: 'parent_div', comments: { title: 'Titre', comment: 'Commentaire', role: 'comments'}, display_list_notes: 'false'
 
-        expect(subject).to redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=false")
+        expect(subject).to_not redirect_to("/commenteux/dummy_model/1?parent_div=parent_div&display_list_notes=true")
+
       end
     end
 

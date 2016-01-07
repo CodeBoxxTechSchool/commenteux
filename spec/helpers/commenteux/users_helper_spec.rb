@@ -8,6 +8,7 @@ module Commenteux
         user = mock_model(User, {:name => 'blah'})
         expect(User).to receive(:find).with(1) {user}
         user_lookup(1)
+
       end
     end
   end

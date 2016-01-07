@@ -34,6 +34,13 @@ Then(/^la page d'affichage de la liste des commentaires pour DummyModel est affi
   page.should have_link('Nouveau')
 end
 
+Then(/^les commentaires pour DummyModel sont retournés en JSON$/) do
+  text_body = page.find("body").text
+  json = JSON.parse(text_body)
+  expect(json).to_not be_nil
+end
+
+
 Then(/^la page d'affichage pour DummyModel est affichée sans la liste des commentaires$/) do
   page.should_not have_content('Commentaire')
   page.should_not have_content('Fait par')

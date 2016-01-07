@@ -34,7 +34,12 @@ module Commenteux
       end
       get_comment_model_method(resource, comment_role).create(comment_params)
 
-      redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+      if @display_list_notes == "true"
+        redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+      else
+        render json: get_comments(resource, manage_roles_parameter(params[:roles]))
+      end
+
     end
 
     def edit
@@ -59,8 +64,8 @@ module Commenteux
         @comment = get_comment_model_method(resource, comment_role).find(params[:id])
 
         if @comment.update(comment_params)
-         #flash[:success] = "Commentaire modifié avec succès"
-         redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+          #flash[:success] = "Commentaire modifié avec succès"
+          redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
         else
           #flash[:danger] = "Impossible de sauvegarder le commentaire"
           render action: 'edit', :layout => false
@@ -76,7 +81,7 @@ module Commenteux
         resource = fetch_resource
         @comment = get_comment_model_method(resource, params[:comment_role]).find(params[:id])
         @comment.destroy!
-        #flash[:success] = "Commentaire supprimé avec succès"
+          #flash[:success] = "Commentaire supprimé avec succès"
       rescue ActiveRecord::RecordNotFound
         #flash[:error] = "Ce commentaire n'existe plus."
       end

@@ -61,6 +61,6 @@ Fonctionnalité: En tant qu'utilisateur normal,
     Et je saisi le commentaire "Ceci est un commentaire"
     Et je saisi le champ radio "comments_role_delivery_man"
     Quand je sauvegarde
-    Alors la page d'affichage pour DummyModel est affichée sans la liste des commentaires
-    Et le nouveau commentaire saisi "Ceci est un commentaire" ne s'y trouve pas
+    Et j'attend "1" secondes
+    Alors les commentaires pour DummyModel sont retournés en JSON
     Et le nouveau commentaire "Ceci est un commentaire" et son rôle "delivery_man" du modèle "DummyModel" ont été bien saisi dans le base de données
