@@ -35,7 +35,7 @@ module Commenteux
       get_comment_model_method(resource, comment_role).create(comment_params)
 
       if @display_list_notes == "true"
-        redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+        redirect_to "#{ENV['SERVER_SCOPE']}/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
       else
         render json: get_comments(resource, manage_roles_parameter(params[:roles]))
       end
@@ -65,14 +65,14 @@ module Commenteux
 
         if @comment.update(comment_params)
           #flash[:success] = "Commentaire modifié avec succès"
-          redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+          redirect_to "#{ENV['SERVER_SCOPE']}/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
         else
           #flash[:danger] = "Impossible de sauvegarder le commentaire"
           render action: 'edit', :layout => false
         end
       rescue ActiveRecord::RecordNotFound
         #flash[:danger] = "Ce commentaire n'existe plus."
-        redirect_to "/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
+        redirect_to "#{ENV['SERVER_SCOPE']}/commenteux/#{@resource.downcase}/#{@resource_id}?parent_div=" + @parent_div + roles + "&display_list_notes=#{@display_list_notes}"
       end
     end
 

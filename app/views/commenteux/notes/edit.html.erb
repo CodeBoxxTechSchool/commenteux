@@ -1,4 +1,4 @@
-<%= simple_form_for @comment, as: 'comments', url: "/commenteux/#{@resource.downcase}/#{@resource_id}/#{@comment.id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}&display_list_notes=#{@display_list_notes}",
+<%= simple_form_for @comment, as: 'comments', url: "#{ENV['SERVER_SCOPE']}/commenteux/#{@resource.downcase}/#{@resource_id}/#{@comment.id}?parent_div=#{@parent_div}&roles=#{@roles.blank? ? '' : @roles}&display_list_notes=#{@display_list_notes}",
                     :remote => true, :data => {:parent => @parent_div}, wrapper: :bootstrap do |c| %>
 
   <%= render partial: "form", locals: {c: c}  %>
