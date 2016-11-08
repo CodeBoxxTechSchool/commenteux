@@ -9,7 +9,7 @@ $(document).on 'click', '#new_notes_link', (e) ->
   display_list_notes = $(@).data('display-list-notes')
 
   $.ajax
-    url: "/commenteux/" + resource + "/" + id + "/new"
+    url: $.App.root_path() + "/commenteux/" + resource + "/" + id + "/new"
     type: "get"
     dataType: "html"
     data:
@@ -62,7 +62,7 @@ $(document).on 'click', '#new_notes_cancelled', (e) ->
   display_list_notes = $(@).data('display-list-notes')
 
   $.ajax
-    url: "/commenteux/" + resource + "/" + id
+    url: $.App.root_path() + "/commenteux/" + resource + "/" + id
     type: "get"
     dataType: "html"
     data:
@@ -90,7 +90,7 @@ $(document).on 'click', '.remove_comment', (e) ->
   comment_role = $(@).data('comment-role')
 
   $.ajax
-    url: "/commenteux/" + resource + "/" + resource_id + "?id=" + id + "&comment_role=" + comment_role
+    url: $.App.root_path() + "/commenteux/" + resource + "/" + resource_id + "?id=" + id + "&comment_role=" + comment_role
     type: "delete"
     dataType: "html"
     success:
@@ -113,7 +113,7 @@ $(document).on 'click', '.edit_comment', (e) ->
   display_list_notes = $(@).data('display-list-notes')
 
   $.ajax
-    url: "/commenteux/" + resource + "/" + resource_id + "/" + id + "/edit"
+    url: $.App.root_path() + "/commenteux/" + resource + "/" + resource_id + "/" + id + "/edit"
     type: "get"
     dataType: "html"
     data:
