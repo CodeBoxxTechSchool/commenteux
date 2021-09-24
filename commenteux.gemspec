@@ -19,7 +19,7 @@ div where you want the response to be inserted."
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency 'rails', '>= 4.0.3', '< 5'
+  s.add_dependency 'rails', '>= 4.0.3', '<= 5.2'
   s.add_dependency "rspec-rails"
   s.add_dependency "acts_as_commentable"
   s.add_dependency "simple_form"
