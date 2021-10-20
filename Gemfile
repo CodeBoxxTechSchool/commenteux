@@ -16,11 +16,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'mysql2'
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'capybara-webkit'
-  gem 'capybara-screenshot'
-  gem 'cucumber-rails', :require => false
 end
 
 # Declare any dependencies that are still in development here instead of in
